@@ -11,12 +11,8 @@
                 <section>
                     <div class="shopCartListCon" v-for="goods in shopCart" :key="goods.id">
                         <div class="left">
-                            <a
-                                href="javascript:;"
-                                class="cartCheckBox"
-                                :checked="goods.checked"
-                                @click.stop="singleGoodsSelected(goods.id)"
-                            >
+                            <a href="javascript:;" class="cartCheckBox" :checked="goods.checked"
+                                @click.stop="singleGoodsSelected(goods.id)">
                             </a>
                         </div>
                         <div class="center">
@@ -39,12 +35,8 @@
             <!--底部通栏-->
             <div class="tabBar">
                 <div class="tabBarLeft">
-                    <a
-                        href="javascript:;"
-                        class="cartCheckBox"
-                        :checked="isSelectedAll"
-                        @click.stop="selectedAll(isSelectedAll)"
-                    >
+                    <a href="javascript:;" class="cartCheckBox" :checked="isSelectedAll"
+                        @click.stop="selectedAll(isSelectedAll)">
                     </a>
                     <span style="font-size: 16px;">全选</span>
                     <div class="selectAll">
@@ -52,12 +44,17 @@
                     </div>
                 </div>
                 <div class="tabBarRight">
+                    <!--
                     <router-link tag="a" class="pay" :to="{path:'/confirmOrder'}">去结算({{goodsCount}})</router-link>
+                    -->
+                    <router-link class="pay" :to="{path:'/confirmOrder'}" custom v-slot="{ navigate }">
+                        <a @click="navigate" @keypress.enter="navigate" role="link">去结算({{goodsCount}})</a>
+                    </router-link>
                 </div>
             </div>
         </div>
     </div>
-    <SelectedLogin v-else/>
+    <SelectedLogin v-else />
 </template>
 
 <script>

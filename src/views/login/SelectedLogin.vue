@@ -4,7 +4,12 @@
             <img src="./images/lk_logo_sm.png" alt="" width="300">
         </div>
         <h4>选择登录方式</h4>
+        <!--
         <router-link tag="button" to="/login">手机登录</router-link>
+        -->
+        <router-link class="pay" to="/login" custom v-slot="{ navigate }">
+            <btn @click="navigate" @keypress.enter="navigate" role="link">手机登录</btn>
+        </router-link>
     </div>
 </template>
 
